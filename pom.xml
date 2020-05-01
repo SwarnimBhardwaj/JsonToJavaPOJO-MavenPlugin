@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.jsontojava.demo</groupId>
+  <artifactId>MavenJsonToJava</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Maven Quick Start Archetype</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.8.1</version>
+    </dependency>
+    
+    <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.7</version>
+    </dependency>
+    
+    <!-- Adding lombock jar for Lombok application in project -->
+    
+    <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+</dependency>
+    
+  </dependencies>
+  
+  <!-- 
+  
+  This plugin generates the java source code from json schema specified in <sourceDirectory>
+  
+  By default the java source files are generated in target/java-gen directory.
+  
+  We can also specify the package using : <targetPackage></targetPackage>
+  
+  We can also change the default Output directory by specifying target directory in <outputDirectory>
+  
+  Also make sure to check : <removeOldOutput>false</removeOldOutput> is false else it will clear/delete output directory
+  
+  on every build. This may also delete other files in same directory structure.
+  
+  
+  
+   -->
+  
+  
+  <build>
+  <plugins>
+  <plugin>
+  <groupId>org.jsonschema2pojo</groupId>
+  <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+  <version>0.4.34</version>
+  <configuration>
+  <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+  <targetPackage>com.jsontojava.demo.my</targetPackage> 
+  <useCommonsLang3>true</useCommonsLang3>
+  <outputDirectory>${basedir}/src/main/java</outputDirectory>
+  <removeOldOutput>false</removeOldOutput>
+  </configuration>
+  <executions>
+  <execution>
+  <goals>
+  <goal>
+  generate
+  </goal>
+  </goals>
+  </execution>
+  </executions>
+  </plugin>
+  
+  
+  
+  </plugins>
+  
+
+  
+  
+  
+  
+  </build>
+  
+  
+</project>
